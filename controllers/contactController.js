@@ -40,3 +40,42 @@ exports.createContact = async (req, res) => {
         res.status(400).json({ message: 'Bad request', error: err.message });
     }
 };
+
+
+exports.updateContact = async (req, res) => {
+    const { id } = req.params;
+    if (!mongoose.isValidObjectId(id)) {
+        return res.status(400).json({ message: 'Invalid contact ID' });
+    }
+
+    try {
+        const updatedContact = await Contact.findByIdAndUpdate(id, req.body, { new: true });
+        if (updatedContact) {
+            res.status(200).json({ message: 'Contact updated successfully' });
+        } else {
+            res.status(404).json({ message: 'Contact not found' });
+        }
+    } catch (err) {
+        console.error('Error updating contact:', err);
+        res.status(400).json({ message: 'Bad request', error: err.message });
+    }
+};
+
+exports.deleteContact = async (req, res) => {
+    const { id } = req.params;
+    if (!mongoose.isValidObjectId(id)) {
+        return res.status(400).json({ message: 'Invalid contact ID' });
+    }
+
+    try {
+        const deletedContact = await Contact.findByIdAndDelete(id);
+        if (deletedContact) {
+            res.status(200).json({ message: 'Contact deleted successfully' });
+        } else {
+            res.status(404).json({ message: 'Contact not found' });
+        }
+    } catch (err) {
+        console.error('Error deleting contact:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
