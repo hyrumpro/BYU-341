@@ -1,11 +1,11 @@
 ### Get all contacts
-GET http://localhost:8080/
+GET http://localhost:8080/api/contacts
 
 ### Get contact by ID
-GET http://localhost:8080/60d5ecb54f21f536d4a9bd8f
+GET http://localhost:8080/api/contacts/66ef71bfaeea674889ca8703
 
 ### Create new contact
-POST http://localhost:8080/
+POST http://localhost:8080/api/contacts/
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Update contact
-PUT http://localhost:8080/60d5ecb54f21f536d4a9bd8f
+PUT http://localhost:8080/api/contacts/66ef71bfaeea674889ca8703
 Content-Type: application/json
 
 {
@@ -29,4 +29,40 @@ Content-Type: application/json
 }
 
 ### Delete contact
-DELETE http://localhost:8080/60d5ecb54f21f536d4a9bd8f
+DELETE http://localhost:8080/api/contacts/66ef71bfaeea674889ca8703
+
+
+
+
+### Get all contacts (Production)
+GET https://byu-341.onrender.com/api/contacts
+
+### Get contact by ID (Production)
+GET https://byu-341.onrender.com/api/contacts/60d5ecb54f21f536d4a9bd8f
+
+### Create new contact (Production)
+POST https://byu-341.onrender.com/api/contacts
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1990-01-01"
+}
+
+### Update contact (Production)
+PUT https://byu-341.onrender.com/api/contacts/60d5ecb54f21f536d4a9bd8f
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "jane@example.com",
+  "favoriteColor": "Green",
+  "birthday": "1992-02-02"
+}
+
+### Delete contact (Production)
+DELETE https://byu-341.onrender.com/api/contacts/60d5ecb54f21f536d4a9bd8f
